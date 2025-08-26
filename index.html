@@ -639,6 +639,134 @@
             animation: harvest 0.6s ease;
         }
 
+        /* Plant Visual Effects */
+        @keyframes silverGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(192, 192, 192, 0.8)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1)); }
+        }
+
+        @keyframes goldGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); }
+        }
+
+        @keyframes diamondSparkle {
+            0%, 100% { filter: drop-shadow(0 0 12px rgba(185, 242, 255, 0.9)) brightness(1.2); }
+            50% { filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1)) brightness(1.5); }
+        }
+
+        @keyframes rainbowShift {
+            0% { filter: hue-rotate(0deg) saturate(1.5) drop-shadow(0 0 8px rgba(255, 0, 0, 0.6)); }
+            16% { filter: hue-rotate(60deg) saturate(1.5) drop-shadow(0 0 8px rgba(255, 165, 0, 0.6)); }
+            33% { filter: hue-rotate(120deg) saturate(1.5) drop-shadow(0 0 8px rgba(255, 255, 0, 0.6)); }
+            50% { filter: hue-rotate(180deg) saturate(1.5) drop-shadow(0 0 8px rgba(0, 255, 0, 0.6)); }
+            66% { filter: hue-rotate(240deg) saturate(1.5) drop-shadow(0 0 8px rgba(0, 0, 255, 0.6)); }
+            83% { filter: hue-rotate(300deg) saturate(1.5) drop-shadow(0 0 8px rgba(128, 0, 128, 0.6)); }
+            100% { filter: hue-rotate(360deg) saturate(1.5) drop-shadow(0 0 8px rgba(255, 0, 0, 0.6)); }
+        }
+
+        @keyframes glitchEffect {
+            0%, 100% { transform: translate(0); filter: hue-rotate(0deg); }
+            10% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+            20% { transform: translate(2px, -1px); filter: hue-rotate(180deg); }
+            30% { transform: translate(-1px, 2px); filter: hue-rotate(270deg); }
+            40% { transform: translate(1px, -2px); filter: hue-rotate(360deg); }
+            50% { transform: translate(-2px, -1px); filter: invert(1); }
+            60% { transform: translate(2px, 1px); filter: invert(0); }
+            70% { transform: translate(-1px, -2px); filter: contrast(2); }
+            80% { transform: translate(1px, 2px); filter: contrast(1); }
+            90% { transform: translate(-2px, 1px); filter: saturate(2); }
+        }
+
+        @keyframes largeShake {
+            0%, 100% { transform: scale(1.3) translate(0); }
+            25% { transform: scale(1.3) translate(-1px, 1px); }
+            50% { transform: scale(1.3) translate(1px, -1px); }
+            75% { transform: scale(1.3) translate(-1px, -1px); }
+        }
+
+        @keyframes smallSparkle {
+            0%, 100% { transform: scale(0.8); filter: brightness(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)); }
+            50% { transform: scale(0.9); filter: brightness(1.3) drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)); }
+        }
+
+        .mutation-silver { animation: silverGlow 2s ease-in-out infinite; }
+        .mutation-gold { animation: goldGlow 2s ease-in-out infinite; }
+        .mutation-diamond { animation: diamondSparkle 1.5s ease-in-out infinite; }
+        .mutation-rainbow { animation: rainbowShift 3s linear infinite; }
+        .mutation-glitched { animation: glitchEffect 0.5s infinite; }
+        .mutation-crystal { animation: diamondSparkle 2s ease-in-out infinite; }
+        .mutation-shadow { filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.8)) brightness(0.7); }
+        .mutation-light { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1)) brightness(1.5); }
+        .mutation-toxic { filter: drop-shadow(0 0 12px rgba(0, 255, 0, 0.8)) hue-rotate(90deg); }
+        .mutation-galaxy { animation: rainbowShift 4s linear infinite; filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.8)); }
+
+        .size-large { animation: largeShake 3s ease-in-out infinite; }
+        .size-super { animation: largeShake 2s ease-in-out infinite; transform: scale(1.5); }
+        .size-small { animation: smallSparkle 2.5s ease-in-out infinite; }
+
+        /* Pet Animation */
+        .pet-sprite {
+            position: absolute;
+            font-size: 24px;
+            z-index: 100;
+            transition: all 2s ease-in-out;
+            animation: petIdle 4s ease-in-out infinite;
+        }
+
+        @keyframes petIdle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Egg Plot Styles */
+        .egg-plot {
+            border: 3px dashed #FFB6C1;
+            background: linear-gradient(45deg, #FFF0F5, #FFE4E1);
+        }
+
+        .egg-plot.has-egg {
+            border-style: solid;
+            border-color: #FF69B4;
+        }
+
+        .egg-progress {
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            right: 2px;
+            height: 6px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .egg-progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #FF69B4, #FFB6C1);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        /* Growth Stage Indicators */
+        .growth-indicator {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .growth-stage-0 .growth-indicator { background: #ff6b6b; }
+        .growth-stage-1 .growth-indicator { background: #ffa500; }
+        .growth-stage-2 .growth-indicator { background: #32cd32; }
+        .growth-stage-2.ready .growth-indicator { 
+            background: #ffd700; 
+            animation: pulse 1s infinite;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header {
@@ -728,6 +856,9 @@
             <div class="currency-display">
                 💰 <span id="heckless">1000</span> Heckless
             </div>
+            <div class="currency-display" style="background: linear-gradient(45deg, #FF6B6B, #FF8E53);">
+                💎 <span id="rupiah">0</span> Rupiah
+            </div>
         </div>
         <div class="header-right">
             <div class="auth-buttons" id="authButtons">
@@ -742,6 +873,7 @@
             </div>
             <button class="btn" onclick="openInventoryPopup()">🎒 Inventory</button>
             <button class="btn" onclick="openProgressPopup()">📊 Progress</button>
+            <button class="btn" onclick="openEventPopup()">🎉 Events</button>
         </div>
     </div>
 
@@ -750,6 +882,17 @@
         <div class="garden-container">
             <div class="weather-display" id="weatherDisplay">☀️ Sunny</div>
             <div class="garden-grid" id="gardenGrid"></div>
+            
+            <!-- Pet Display -->
+            <div id="petDisplay" class="pet-sprite" style="display: none;"></div>
+            
+            <!-- Egg Hatching Area -->
+            <div style="margin-top: 20px; text-align: center;">
+                <h4 style="color: #2E8B57; margin-bottom: 10px;">🥚 Egg Hatching Plot</h4>
+                <div id="eggPlot" class="plot egg-plot" style="width: 100px; height: 100px; margin: 0 auto; position: relative;">
+                    <div style="font-size: 14px; color: #666; text-align: center; line-height: 100px;">Empty</div>
+                </div>
+            </div>
         </div>
 
         <!-- Inventory Display -->
@@ -918,6 +1061,63 @@
         </div>
     </div>
 
+    <!-- Plant Removal Confirmation Popup -->
+    <div class="popup-overlay" id="confirmRemovalPopup">
+        <div class="popup">
+            <div class="popup-header">
+                <span>🪓 Remove Plant</span>
+                <button class="popup-close" onclick="closePopup('confirmRemovalPopup')">&times;</button>
+            </div>
+            <div class="popup-content">
+                <div id="removalMessage" style="text-align: center; margin-bottom: 20px;"></div>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="btn btn-danger" onclick="confirmPlantRemoval()">Ya, Hapus</button>
+                    <button class="btn" onclick="closePopup('confirmRemovalPopup')">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Popup -->
+    <div class="popup-overlay" id="eventPopup">
+        <div class="popup">
+            <div class="popup-header">
+                <span>🎉 Events</span>
+                <button class="popup-close" onclick="closePopup('eventPopup')">&times;</button>
+            </div>
+            <div class="popup-content">
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchEventTab('info')">📋 Event Info</button>
+                    <button class="tab-btn" onclick="switchEventTab('trade')">🔄 Seed Trade</button>
+                    <button class="tab-btn" onclick="switchEventTab('shop')">🛒 Event Shop</button>
+                </div>
+
+                <!-- Event Info Tab -->
+                <div class="tab-content active" id="eventInfoTab">
+                    <div id="eventsList"></div>
+                </div>
+
+                <!-- Seed Trade Tab -->
+                <div class="tab-content" id="eventTradeTab">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h4>🌱 Seed Trade Event</h4>
+                        <p style="color: #666;">Trade your seeds for Rupiah!</p>
+                    </div>
+                    <div id="seedTradeList"></div>
+                </div>
+
+                <!-- Event Shop Tab -->
+                <div class="tab-content" id="eventShopTab">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h4>💎 Event Shop</h4>
+                        <p style="color: #666;">Special items available for Rupiah!</p>
+                    </div>
+                    <div id="eventShopGrid" class="shop-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Notification -->
     <div id="notification" class="notification"></div>
 
@@ -977,34 +1177,36 @@
         // Game Data Structure
         const gameData = {
             seeds: {
-                carrot: { name: 'Carrot', icon: '🥕', rarity: 'Common', price: 20, growTime: 30000, harvestType: 'single', baseValue: 35, levelReq: 1 },
-                strawberry: { name: 'Strawberry', icon: '🍓', rarity: 'Common', price: 25, growTime: 45000, harvestType: 'multi', baseValue: 40, durability: 5, levelReq: 1 },
-                blueberry: { name: 'Blueberry', icon: '🫐', rarity: 'Common', price: 30, growTime: 40000, harvestType: 'multi', baseValue: 45, durability: 6, levelReq: 2 },
-                orange_tulip: { name: 'Orange Tulip', icon: '🌷', rarity: 'Uncommon', price: 50, growTime: 60000, harvestType: 'single', baseValue: 80, levelReq: 3 },
-                tomato: { name: 'Tomato', icon: '🍅', rarity: 'Uncommon', price: 45, growTime: 70000, harvestType: 'multi', baseValue: 65, durability: 4, levelReq: 3 },
-                corn: { name: 'Corn', icon: '🌽', rarity: 'Uncommon', price: 55, growTime: 80000, harvestType: 'single', baseValue: 100, levelReq: 4 },
-                daffodil: { name: 'Daffodil', icon: '🌼', rarity: 'Uncommon', price: 60, growTime: 75000, harvestType: 'single', baseValue: 95, levelReq: 4 },
-                watermelon: { name: 'Watermelon', icon: '🍉', rarity: 'Rare', price: 100, growTime: 120000, harvestType: 'single', baseValue: 180, levelReq: 5 },
-                pumpkin: { name: 'Pumpkin', icon: '🎃', rarity: 'Rare', price: 110, growTime: 140000, harvestType: 'single', baseValue: 220, levelReq: 6 },
-                apple: { name: 'Apple', icon: '🍎', rarity: 'Rare', price: 120, growTime: 160000, harvestType: 'multi', baseValue: 150, durability: 8, levelReq: 6 },
-                bamboo: { name: 'Bamboo', icon: '🎋', rarity: 'Rare', price: 130, growTime: 100000, harvestType: 'multi', baseValue: 110, durability: 12, levelReq: 7 },
-                coconut: { name: 'Coconut', icon: '🥥', rarity: 'Epic', price: 180, growTime: 200000, harvestType: 'multi', baseValue: 250, durability: 6, levelReq: 8 },
-                cactus: { name: 'Cactus', icon: '🌵', rarity: 'Epic', price: 200, growTime: 180000, harvestType: 'multi', baseValue: 200, durability: 15, levelReq: 8 },
-                dragon_fruit: { name: 'Dragon Fruit', icon: '🐉', rarity: 'Epic', price: 250, growTime: 240000, harvestType: 'single', baseValue: 450, levelReq: 9 },
-                mango: { name: 'Mango', icon: '🥭', rarity: 'Epic', price: 220, growTime: 220000, harvestType: 'multi', baseValue: 320, durability: 5, levelReq: 9 },
-                grape: { name: 'Grape', icon: '🍇', rarity: 'Epic', price: 190, growTime: 190000, harvestType: 'multi', baseValue: 230, durability: 7, levelReq: 10 },
-                mushroom: { name: 'Mushroom', icon: '🍄', rarity: 'Legendary', price: 350, growTime: 300000, harvestType: 'multi', baseValue: 500, durability: 10, levelReq: 12 },
-                pepper: { name: 'Pepper', icon: '🌶️', rarity: 'Legendary', price: 320, growTime: 280000, harvestType: 'multi', baseValue: 450, durability: 8, levelReq: 12 },
-                cacao: { name: 'Cacao', icon: '🍫', rarity: 'Legendary', price: 400, growTime: 320000, harvestType: 'multi', baseValue: 650, durability: 6, levelReq: 13 },
-                beanstalk: { name: 'Beanstalk', icon: '🌱', rarity: 'Mythic', price: 600, growTime: 400000, harvestType: 'single', baseValue: 1000, levelReq: 15 },
-                ember_lily: { name: 'Ember Lily', icon: '🔥', rarity: 'Mythic', price: 700, growTime: 450000, harvestType: 'multi', baseValue: 900, durability: 4, levelReq: 16 },
-                sugar_apple: { name: 'Sugar Apple', icon: '🍏', rarity: 'Mythic', price: 650, growTime: 420000, harvestType: 'multi', baseValue: 800, durability: 5, levelReq: 16 },
-                burning_bud: { name: 'Burning Bud', icon: '🌺', rarity: 'Mythic', price: 800, growTime: 480000, harvestType: 'single', baseValue: 1200, levelReq: 17 },
-                giant_pinecone: { name: 'Giant Pinecone', icon: '🌲', rarity: 'Cosmic', price: 1200, growTime: 600000, harvestType: 'single', baseValue: 1800, levelReq: 20 },
-                elder_strawberry: { name: 'Elder Strawberry', icon: '👑', rarity: 'Cosmic', price: 1400, growTime: 650000, harvestType: 'multi', baseValue: 1500, durability: 3, levelReq: 22 },
-                romanesco: { name: 'Romanesco', icon: '🥦', rarity: 'Cosmic', price: 1800, growTime: 720000, harvestType: 'single', baseValue: 2500, levelReq: 25 }
+                carrot: { name: 'Carrot', icon: '🥕', rarity: 'Common', price: 20, growTime: 30000, harvestType: 'single', baseValue: 35 },
+                strawberry: { name: 'Strawberry', icon: '🍓', rarity: 'Common', price: 25, growTime: 45000, harvestType: 'multi', baseValue: 40, durability: 5 },
+                blueberry: { name: 'Blueberry', icon: '🫐', rarity: 'Common', price: 30, growTime: 40000, harvestType: 'multi', baseValue: 45, durability: 6 },
+                orange_tulip: { name: 'Orange Tulip', icon: '🌷', rarity: 'Uncommon', price: 50, growTime: 60000, harvestType: 'single', baseValue: 80 },
+                tomato: { name: 'Tomato', icon: '🍅', rarity: 'Uncommon', price: 45, growTime: 70000, harvestType: 'multi', baseValue: 65, durability: 4 },
+                corn: { name: 'Corn', icon: '🌽', rarity: 'Uncommon', price: 55, growTime: 80000, harvestType: 'single', baseValue: 100 },
+                daffodil: { name: 'Daffodil', icon: '🌼', rarity: 'Uncommon', price: 60, growTime: 75000, harvestType: 'single', baseValue: 95 },
+                watermelon: { name: 'Watermelon', icon: '🍉', rarity: 'Rare', price: 100, growTime: 120000, harvestType: 'single', baseValue: 180 },
+                pumpkin: { name: 'Pumpkin', icon: '🎃', rarity: 'Rare', price: 110, growTime: 140000, harvestType: 'single', baseValue: 220 },
+                apple: { name: 'Apple', icon: '🍎', rarity: 'Rare', price: 120, growTime: 160000, harvestType: 'multi', baseValue: 150, durability: 8 },
+                bamboo: { name: 'Bamboo', icon: '🎋', rarity: 'Rare', price: 130, growTime: 100000, harvestType: 'multi', baseValue: 110, durability: 12 },
+                coconut: { name: 'Coconut', icon: '🥥', rarity: 'Epic', price: 180, growTime: 200000, harvestType: 'multi', baseValue: 250, durability: 6 },
+                cactus: { name: 'Cactus', icon: '🌵', rarity: 'Epic', price: 200, growTime: 180000, harvestType: 'multi', baseValue: 200, durability: 15 },
+                dragon_fruit: { name: 'Dragon Fruit', icon: '🐉', rarity: 'Epic', price: 250, growTime: 240000, harvestType: 'single', baseValue: 450 },
+                mango: { name: 'Mango', icon: '🥭', rarity: 'Epic', price: 220, growTime: 220000, harvestType: 'multi', baseValue: 320, durability: 5 },
+                grape: { name: 'Grape', icon: '🍇', rarity: 'Epic', price: 190, growTime: 190000, harvestType: 'multi', baseValue: 230, durability: 7 },
+                mushroom: { name: 'Mushroom', icon: '🍄', rarity: 'Legendary', price: 350, growTime: 300000, harvestType: 'multi', baseValue: 500, durability: 10 },
+                pepper: { name: 'Pepper', icon: '🌶️', rarity: 'Legendary', price: 320, growTime: 280000, harvestType: 'multi', baseValue: 450, durability: 8 },
+                cacao: { name: 'Cacao', icon: '🍫', rarity: 'Legendary', price: 400, growTime: 320000, harvestType: 'multi', baseValue: 650, durability: 6 },
+                beanstalk: { name: 'Beanstalk', icon: '🌱', rarity: 'Mythic', price: 600, growTime: 400000, harvestType: 'single', baseValue: 1000 },
+                ember_lily: { name: 'Ember Lily', icon: '🔥', rarity: 'Mythic', price: 700, growTime: 450000, harvestType: 'multi', baseValue: 900, durability: 4 },
+                sugar_apple: { name: 'Sugar Apple', icon: '🍏', rarity: 'Mythic', price: 650, growTime: 420000, harvestType: 'multi', baseValue: 800, durability: 5 },
+                burning_bud: { name: 'Burning Bud', icon: '🌺', rarity: 'Mythic', price: 800, growTime: 480000, harvestType: 'single', baseValue: 1200 },
+                giant_pinecone: { name: 'Giant Pinecone', icon: '🌲', rarity: 'Cosmic', price: 1200, growTime: 600000, harvestType: 'single', baseValue: 1800 },
+                elder_strawberry: { name: 'Elder Strawberry', icon: '👑', rarity: 'Cosmic', price: 1400, growTime: 650000, harvestType: 'multi', baseValue: 1500, durability: 3 },
+                romanesco: { name: 'Romanesco', icon: '🥦', rarity: 'Cosmic', price: 1800, growTime: 720000, harvestType: 'single', baseValue: 2500 }
             },
             gear: {
+                shovel: { name: 'Shovel', icon: '🪓', price: 100, effect: 'remove_plant', levelReq: 1, type: 'tool' },
+                watering_can: { name: 'Watering Can', icon: '🪣', price: 75, effect: 'growth_boost_instant', levelReq: 1, type: 'consumable' },
                 small_sprinkler: { name: 'Small Sprinkler', icon: '💧', price: 250, duration: 600000, radius: 1, growthBonus: 0.2, sizeBonus: 0.15, mutationBonus: 0.1, levelReq: 3, type: 'sprinkler' },
                 medium_sprinkler: { name: 'Medium Sprinkler', icon: '🌊', price: 600, duration: 900000, radius: 2, growthBonus: 0.35, sizeBonus: 0.25, mutationBonus: 0.18, levelReq: 6, type: 'sprinkler' },
                 big_sprinkler: { name: 'Big Sprinkler', icon: '⛲', price: 1200, duration: 1200000, radius: 3, growthBonus: 0.5, sizeBonus: 0.4, mutationBonus: 0.25, levelReq: 10, type: 'sprinkler' },
@@ -1094,7 +1296,7 @@
                 legendary: ['burning_bud', 'giant_pinecone', 'elder_strawberry', 'romanesco']
             },
             gear: {
-                common: ['small_sprinkler', 'fertilizer_pack', 'basic_watering_can'],
+                common: ['shovel', 'watering_can', 'small_sprinkler', 'fertilizer_pack', 'basic_watering_can'],
                 uncommon: ['medium_sprinkler', 'lucky_shovel', 'growth_lamp'],
                 rare: ['big_sprinkler', 'auto_harvester', 'golden_hoe'],
                 epic: ['ultra_sprinkler', 'mutation_catalyst', 'rainbow_scarecrow'],
@@ -1121,6 +1323,7 @@
         // Game State
         let gameState = {
             heckless: 1000,
+            rupiah: 0,
             xp: 0,
             level: 1,
             plots: Array(50).fill(null).map((_, i) => ({ id: i, plant: null, sprinkler: null })),
@@ -1131,6 +1334,7 @@
                 fruits: {}
             },
             selectedSeed: null,
+            selectedTool: null,
             currentWeather: 'sunny',
             weatherStartTime: Date.now(),
             shopStock: {
@@ -1164,6 +1368,11 @@
                 totalEarned: 0
             },
             activeEffects: [],
+            eggPlot: { hasEgg: false, eggType: null, startTime: 0 },
+            events: {
+                seedTrade: { active: true, endTime: Date.now() + 86400000 }, // 24 hours
+                lastEventCheck: Date.now()
+            },
             lastSave: Date.now()
         };
 
@@ -1402,7 +1611,7 @@
                     else if (poolType === 'gear') itemData = gameData.gear[itemKey];
                     else if (poolType === 'eggs') itemData = gameData.petEggs[itemKey];
                     
-                    if (itemData && gameState.level >= (itemData.levelReq || 1)) {
+                    if (itemData) {
                         let stock = 1;
                         switch (selectedRarity) {
                             case 'common': stock = Math.floor(seededRandom() * 4) + 3; break;
@@ -1531,6 +1740,10 @@
                 const mutationKey = Math.random() < mutationChance ? 
                     getRandomFromWeighted(gameData.mutations) : 'normal';
                 const mutation = gameData.mutations[mutationKey];
+                
+                // Store last mutation and size for removal confirmation and visual effects
+                this.lastMutation = mutationKey;
+                this.lastSize = sizeKey;
 
                 let value = seed.baseValue * size.multiplier * mutation.multiplier * weather.yieldMultiplier;
                 
@@ -1840,6 +2053,7 @@
         // Game Functions
         function updateDisplay() {
             document.getElementById('heckless').textContent = gameState.heckless;
+            document.getElementById('rupiah').textContent = gameState.rupiah;
 
             const weather = gameData.weather[gameState.currentWeather];
             document.getElementById('weatherDisplay').textContent = `${weather.icon} ${weather.name}`;
@@ -1847,6 +2061,8 @@
             updateGarden();
             updateInventory();
             updateShopTimer();
+            updatePetDisplay();
+            updateEggPlot();
         }
 
         function updateGarden() {
@@ -1865,9 +2081,22 @@
                     plantElement.className = `plant growth-stage-${plot.plant.stage}`;
                     plantElement.textContent = gameData.seeds[plot.plant.seedType].icon;
                     
+                    // Add visual effects based on mutation and size
+                    if (plot.plant.lastMutation) {
+                        plantElement.classList.add(`mutation-${plot.plant.lastMutation}`);
+                    }
+                    if (plot.plant.lastSize) {
+                        plantElement.classList.add(`size-${plot.plant.lastSize}`);
+                    }
+                    
                     if (plot.plant.isReady) {
                         plantElement.classList.add('ready');
                     }
+                    
+                    // Add growth indicator
+                    const growthIndicator = document.createElement('div');
+                    growthIndicator.className = 'growth-indicator';
+                    plotElement.appendChild(growthIndicator);
                     
                     plotElement.appendChild(plantElement);
                 }
@@ -1899,8 +2128,59 @@
             });
         }
 
+        let plotToRemove = null;
+
         function handlePlotClick(plotIndex) {
             const plot = gameState.plots[plotIndex];
+
+            // Handle shovel tool usage
+            if (gameState.selectedTool === 'shovel' && plot.plant) {
+                const seed = gameData.seeds[plot.plant.seedType];
+                
+                // Check if plant has high rarity mutation
+                const hasHighRarityMutation = plot.plant.lastMutation && 
+                    ['gold', 'diamond', 'rainbow', 'glitched', 'galaxy', 'crystal', 'shadow', 'light', 'toxic'].includes(plot.plant.lastMutation);
+                
+                if (hasHighRarityMutation || seed.rarity === 'Epic' || seed.rarity === 'Legendary' || seed.rarity === 'Mythic' || seed.rarity === 'Cosmic') {
+                    plotToRemove = plotIndex;
+                    document.getElementById('removalMessage').innerHTML = `
+                        <div style="font-size: 24px; margin-bottom: 10px;">${seed.icon}</div>
+                        <div style="font-weight: bold; margin-bottom: 10px;">${seed.name}</div>
+                        <div style="color: #ff6b6b;">Apakah kamu yakin ingin menghapus tanaman ini?</div>
+                        <div style="color: #ff6b6b;">Tanaman ini memiliki rarity tinggi.</div>
+                    `;
+                    document.getElementById('confirmRemovalPopup').classList.add('active');
+                } else {
+                    removePlant(plotIndex);
+                }
+                return;
+            }
+
+            // Handle watering can tool usage
+            if (gameState.selectedTool === 'watering_can' && plot.plant && !plot.plant.isReady) {
+                // Advance plant growth by one stage
+                plot.plant.stage = Math.min(plot.plant.stage + 1, 2);
+                
+                // If plant reaches final stage, make it ready
+                if (plot.plant.stage === 2) {
+                    plot.plant.isReady = true;
+                }
+                
+                // Consume watering can
+                gameState.inventory.tools.watering_can--;
+                if (gameState.inventory.tools.watering_can <= 0) {
+                    delete gameState.inventory.tools.watering_can;
+                    gameState.selectedTool = null;
+                    document.querySelectorAll('.inventory-item.selected').forEach(item => item.classList.remove('selected'));
+                }
+                
+                const seed = gameData.seeds[plot.plant.seedType];
+                showNotification(`🪣 Watered ${seed.name}! Growth boosted by one stage.`);
+                
+                updateDisplay();
+                saveGame();
+                return;
+            }
 
             if (plot.plant && plot.plant.isReady) {
                 const result = plot.plant.harvest();
@@ -1946,13 +2226,32 @@
             }
         }
 
+        function removePlant(plotIndex) {
+            const plot = gameState.plots[plotIndex];
+            if (plot.plant) {
+                const seed = gameData.seeds[plot.plant.seedType];
+                plot.plant = null;
+                showNotification(`🪓 Removed ${seed.name}!`);
+                updateDisplay();
+                saveGame();
+            }
+        }
+
+        function confirmPlantRemoval() {
+            if (plotToRemove !== null) {
+                removePlant(plotToRemove);
+                plotToRemove = null;
+                closePopup('confirmRemovalPopup');
+            }
+        }
+
         function updateInventory() {
             const inventoryGrid = document.getElementById('inventoryGrid');
             inventoryGrid.innerHTML = '';
 
             for (const [seedKey, seed] of Object.entries(gameData.seeds)) {
                 const count = gameState.inventory.seeds[seedKey] || 0;
-                if (count > 0 || gameState.level >= (seed.levelReq || 1)) {
+                if (count > 0) {
                     const inventoryItem = document.createElement('div');
                     inventoryItem.className = `inventory-item ${count === 0 ? 'empty' : ''}`;
                     
@@ -1996,8 +2295,112 @@
 
         function clearSelection() {
             gameState.selectedSeed = null;
+            gameState.selectedTool = null;
             document.querySelectorAll('.inventory-item.selected').forEach(item => item.classList.remove('selected'));
             showNotification('Selection cleared!');
+        }
+
+        function updatePetDisplay() {
+            const petDisplay = document.getElementById('petDisplay');
+            
+            if (gameState.pet.type && gameState.pet.sprite) {
+                petDisplay.style.display = 'block';
+                petDisplay.textContent = gameState.pet.sprite;
+                
+                // Random movement around garden
+                const gardenContainer = document.querySelector('.garden-container');
+                const containerRect = gardenContainer.getBoundingClientRect();
+                
+                const x = Math.random() * (containerRect.width - 50);
+                const y = Math.random() * (containerRect.height - 50) + 100;
+                
+                petDisplay.style.left = x + 'px';
+                petDisplay.style.top = y + 'px';
+            } else {
+                petDisplay.style.display = 'none';
+            }
+        }
+
+        function updateEggPlot() {
+            const eggPlot = document.getElementById('eggPlot');
+            
+            if (gameState.eggPlot.hasEgg) {
+                const egg = gameData.petEggs[gameState.eggPlot.eggType];
+                const elapsed = Date.now() - gameState.eggPlot.startTime;
+                const progress = Math.min(elapsed / egg.hatchTime, 1);
+                
+                eggPlot.classList.add('has-egg');
+                eggPlot.innerHTML = `
+                    <div style="font-size: 32px; text-align: center; line-height: 70px;">${egg.icon}</div>
+                    <div class="egg-progress">
+                        <div class="egg-progress-bar" style="width: ${progress * 100}%"></div>
+                    </div>
+                    <div style="font-size: 10px; text-align: center; color: #666; margin-top: 5px;">
+                        ${formatTime(Math.max(0, egg.hatchTime - elapsed))}
+                    </div>
+                `;
+                
+                if (progress >= 1) {
+                    hatchEgg();
+                }
+            } else {
+                eggPlot.classList.remove('has-egg');
+                eggPlot.innerHTML = '<div style="font-size: 14px; color: #666; text-align: center; line-height: 100px;">Empty</div>';
+            }
+            
+            eggPlot.onclick = () => handleEggPlotClick();
+        }
+
+        function handleEggPlotClick() {
+            if (gameState.eggPlot.hasEgg) {
+                showNotification('🥚 Egg is already hatching!');
+                return;
+            }
+            
+            // Check if player has eggs in inventory
+            const availableEggs = Object.keys(gameState.inventory.eggs).filter(egg => gameState.inventory.eggs[egg] > 0);
+            
+            if (availableEggs.length === 0) {
+                showNotification('❌ No eggs available! Buy some from the Pet Shop.');
+                return;
+            }
+            
+            // Use first available egg
+            const eggKey = availableEggs[0];
+            gameState.inventory.eggs[eggKey]--;
+            if (gameState.inventory.eggs[eggKey] <= 0) {
+                delete gameState.inventory.eggs[eggKey];
+            }
+            
+            gameState.eggPlot.hasEgg = true;
+            gameState.eggPlot.eggType = eggKey;
+            gameState.eggPlot.startTime = Date.now();
+            
+            const egg = gameData.petEggs[eggKey];
+            showNotification(`🥚 Started hatching ${egg.name}! It will hatch in ${formatTime(egg.hatchTime)}`);
+            
+            updateDisplay();
+            saveGame();
+        }
+
+        function hatchEgg() {
+            const egg = gameData.petEggs[gameState.eggPlot.eggType];
+            const pets = egg.pets;
+            const randomPet = pets[Math.floor(Math.random() * pets.length)];
+            const petData = gameData.pets[randomPet];
+            
+            // Add pet to inventory instead of auto-equipping
+            if (!gameState.inventory.pets) gameState.inventory.pets = {};
+            gameState.inventory.pets[randomPet] = (gameState.inventory.pets[randomPet] || 0) + 1;
+            
+            gameState.eggPlot.hasEgg = false;
+            gameState.eggPlot.eggType = null;
+            gameState.eggPlot.startTime = 0;
+            
+            showNotification(`🎉 Your egg hatched into a ${petData.name}! Check your inventory to equip it.`);
+            
+            updateDisplay();
+            saveGame();
         }
 
         function checkLevelUp() {
@@ -2418,7 +2821,7 @@
                             gameState.inventory.tools[itemKey] = (gameState.inventory.tools[itemKey] || 0) + 1;
                             showNotification(`✅ Bought ${itemData.name}! Added to inventory.`);
                         }
-                    } else if (itemData.type === 'consumable') {
+                    } else if (itemData.type === 'consumable' || itemData.type === 'tool') {
                         gameState.inventory.tools[itemKey] = (gameState.inventory.tools[itemKey] || 0) + 1;
                         showNotification(`✅ Bought ${itemData.name}! Added to inventory.`);
                     }
@@ -2618,6 +3021,36 @@
                 return;
             }
             
+            if (tool.type === 'tool' && toolKey === 'shovel') {
+                // Select shovel for use
+                gameState.selectedTool = 'shovel';
+                gameState.selectedSeed = null;
+                
+                // Clear other selections
+                document.querySelectorAll('.inventory-item.selected').forEach(item => item.classList.remove('selected'));
+                
+                // Highlight selected shovel
+                event.target.closest('.inventory-item').classList.add('selected');
+                
+                showNotification('🪓 Shovel selected! Click on plants to remove them.');
+                return;
+            }
+            
+            if (tool.effect === 'growth_boost_instant') {
+                // Select watering can for use
+                gameState.selectedTool = 'watering_can';
+                gameState.selectedSeed = null;
+                
+                // Clear other selections
+                document.querySelectorAll('.inventory-item.selected').forEach(item => item.classList.remove('selected'));
+                
+                // Highlight selected watering can
+                event.target.closest('.inventory-item').classList.add('selected');
+                
+                showNotification('🪣 Watering Can selected! Click on plants to boost their growth.');
+                return;
+            }
+            
             if (tool.type === 'sprinkler') {
                 const emptyPlot = gameState.plots.find(plot => !plot.sprinkler);
                 if (emptyPlot) {
@@ -2785,21 +3218,220 @@
             }
         }
 
+        // Event System Functions
+        function openEventPopup() {
+            const popup = document.getElementById('eventPopup');
+            popup.classList.add('active');
+            switchEventTab('info');
+        }
+
+        function switchEventTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('#eventPopup .tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('#eventPopup .tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(`event${tabName.charAt(0).toUpperCase() + tabName.slice(1)}Tab`).classList.add('active');
+            
+            // Add active class to clicked tab button
+            event.target.classList.add('active');
+            
+            // Update content based on tab
+            switch (tabName) {
+                case 'info':
+                    updateEventInfo();
+                    break;
+                case 'trade':
+                    updateSeedTrade();
+                    break;
+                case 'shop':
+                    updateEventShop();
+                    break;
+            }
+        }
+
+        function updateEventInfo() {
+            const eventsList = document.getElementById('eventsList');
+            eventsList.innerHTML = `
+                <div class="achievement-item active">
+                    <div><strong>🌱 Seed Trade Event</strong></div>
+                    <div>Trade your seeds for Rupiah currency!</div>
+                    <div>Status: <span style="color: #4CAF50;">Active</span></div>
+                    <div>Time remaining: ${formatTime(gameState.events.seedTrade.endTime - Date.now())}</div>
+                </div>
+                <div class="achievement-item">
+                    <div><strong>🎁 Daily Bonus Event</strong></div>
+                    <div>Coming soon! Extra rewards for daily activities.</div>
+                    <div>Status: <span style="color: #666;">Coming Soon</span></div>
+                </div>
+            `;
+        }
+
+        function updateSeedTrade() {
+            const seedTradeList = document.getElementById('seedTradeList');
+            seedTradeList.innerHTML = '';
+
+            const seedRarityValues = {
+                'Common': 1500,
+                'Uncommon': 3000,
+                'Rare': 4500,
+                'Epic': 6000,
+                'Legendary': 7500,
+                'Mythic': 9000,
+                'Cosmic': 10500
+            };
+
+            for (const [seedKey, count] of Object.entries(gameState.inventory.seeds)) {
+                if (count > 0) {
+                    const seed = gameData.seeds[seedKey];
+                    const value = seedRarityValues[seed.rarity] || 1500;
+                    
+                    const tradeItem = document.createElement('div');
+                    tradeItem.className = 'inventory-item';
+                    tradeItem.innerHTML = `
+                        <div style="font-size: 28px; margin-bottom: 8px;">${seed.icon}</div>
+                        <div style="font-size: 11px; font-weight: bold; margin-bottom: 5px;">${seed.name}</div>
+                        <div style="font-size: 10px; color: #666;">×${count} available</div>
+                        <div style="font-size: 10px; color: #FF6B6B; margin-bottom: 8px;">${value} 💎 each</div>
+                        <button class="btn" onclick="tradeSeed('${seedKey}')" style="font-size: 10px; padding: 4px 8px;">Trade 1</button>
+                    `;
+                    
+                    seedTradeList.appendChild(tradeItem);
+                }
+            }
+
+            if (seedTradeList.children.length === 0) {
+                seedTradeList.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No seeds available for trade</div>';
+            }
+        }
+
+        function updateEventShop() {
+            const eventShopGrid = document.getElementById('eventShopGrid');
+            eventShopGrid.innerHTML = `
+                <div class="shop-item">
+                    <div class="shop-item-icon">🌟</div>
+                    <div class="shop-item-name">Lucky Charm</div>
+                    <div class="shop-item-price">5000💎</div>
+                    <div class="shop-item-stock">3</div>
+                </div>
+                <div class="shop-item">
+                    <div class="shop-item-icon">⚡</div>
+                    <div class="shop-item-name">Speed Boost</div>
+                    <div class="shop-item-price">3000💎</div>
+                    <div class="shop-item-stock">5</div>
+                </div>
+                <div class="shop-item">
+                    <div class="shop-item-icon">💎</div>
+                    <div class="shop-item-name">Rare Seed Pack</div>
+                    <div class="shop-item-price">8000💎</div>
+                    <div class="shop-item-stock">2</div>
+                </div>
+            `;
+        }
+
+        function tradeSeed(seedKey) {
+            const seed = gameData.seeds[seedKey];
+            const count = gameState.inventory.seeds[seedKey];
+            
+            if (count <= 0) {
+                showNotification('❌ No seeds available to trade!');
+                return;
+            }
+            
+            const seedRarityValues = {
+                'Common': 1500,
+                'Uncommon': 3000,
+                'Rare': 4500,
+                'Epic': 6000,
+                'Legendary': 7500,
+                'Mythic': 9000,
+                'Cosmic': 10500
+            };
+            
+            const value = seedRarityValues[seed.rarity] || 1500;
+            
+            gameState.inventory.seeds[seedKey]--;
+            if (gameState.inventory.seeds[seedKey] <= 0) {
+                delete gameState.inventory.seeds[seedKey];
+            }
+            
+            gameState.rupiah += value;
+            
+            showNotification(`✅ Traded ${seed.name} for ${value} Rupiah!`);
+            
+            updateDisplay();
+            updateSeedTrade();
+            saveGame();
+        }
+
         // Make functions global for onclick handlers
         window.openAuthPopup = openAuthPopup;
         window.openShopPopup = openShopPopup;
+        window.openInventoryPopup = openInventoryPopup;
+        window.openSellPopup = openSellPopup;
         window.openProgressPopup = openProgressPopup;
+        window.openEventPopup = openEventPopup;
         window.closePopup = closePopup;
         window.switchTab = switchTab;
+        window.switchInventoryTab = switchInventoryTab;
+        window.switchEventTab = switchEventTab;
         window.logout = logout;
         window.clearSelection = clearSelection;
         window.claimDailyReward = claimDailyReward;
         window.claimAchievement = claimAchievement;
         window.claimMission = claimMission;
+        window.adjustSellQuantity = adjustSellQuantity;
+        window.confirmSell = confirmSell;
+        window.confirmPlantRemoval = confirmPlantRemoval;
+        window.tradeSeed = tradeSeed;
 
         // Game Loop
         function gameLoop() {
             updateWeather();
+            
+            // Check if shop needs restocking
+            if (shouldRestockShop()) {
+                generateShopStock();
+            }
+            
+            // Update active effects
+            if (gameState.activeEffects) {
+                gameState.activeEffects = gameState.activeEffects.filter(effect => 
+                    Date.now() - effect.startTime < effect.duration
+                );
+            }
+            
+            // Update pet hatching
+            if (gameState.pet.hasEgg && gameState.pet.eggType) {
+                const egg = gameData.petEggs[gameState.pet.eggType];
+                const elapsed = Date.now() - gameState.pet.hatchTime;
+                
+                if (elapsed >= egg.hatchTime) {
+                    const pets = egg.pets;
+                    const randomPet = pets[Math.floor(Math.random() * pets.length)];
+                    const petData = gameData.pets[randomPet];
+                    
+                    gameState.pet = {
+                        type: randomPet,
+                        name: petData.name,
+                        level: 1,
+                        sprite: petData.icon,
+                        buffs: petData.buffs,
+                        hasEgg: false,
+                        eggType: null,
+                        hatchTime: 0
+                    };
+                    
+                    showNotification(`🎉 Your egg hatched into a ${petData.name}!`);
+                }
+            }
+            
             updateDisplay();
             saveGame();
         }
@@ -2821,5 +3453,5 @@
         // Start the game
         initGame();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9753445545c689b0',t:'MTc1NjIxMDY1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97536fcb0195c887',t:'MTc1NjIxMjQzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
